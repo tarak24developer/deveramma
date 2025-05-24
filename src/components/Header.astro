@@ -1,0 +1,144 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = [
+  { label: t('nav.home'), href: '/' },
+  { label: t('nav.about'), href: '/about' },
+  { label: t('nav.events'), href: '/events' },
+  { label: t('nav.poojas'), href: '/poojas' },
+  { label: t('nav.gallery'), href: '/gallery' },
+  { label: t('nav.donate'), href: '/donate' },
+  { label: t('nav.contact'), href: '/contact' },
+];
+---
+
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="/">
+        <span class="temple-name">Deveramma Temple</span>
+      </a>
+    </div>
+    
+    <nav class="main-nav">
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="nav-list">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class={Astro.url.pathname === item.href ? 'active' : ''}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <div class="header-right">
+      <LanguageSwitcher />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo a {
+    text-decoration: none;
+    color: #8b0000;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-list a:hover, .nav-list a.active {
+    color: #8b0000;
+  }
+  
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+  
+  @media (max-width: 768px) {
+    .mobile-menu-btn {
+      display: block;
+    }
+    
+    .nav-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: #fff;
+      padding: 1rem;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+    
+    .nav-list.open {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('.nav-list');
+    
+    menuBtn?.addEventListener('click', () => {
+      navList?.classList.toggle('open');
+    });
+  });
+</script>

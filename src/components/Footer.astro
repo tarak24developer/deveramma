@@ -1,0 +1,160 @@
+---
+import { SITE, TEMPLE_INFO } from '../config';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import BackToTop from './BackToTop.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Deveramma Temple</h3>
+        <p>A sacred place dedicated to spirituality, peace and devotion.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook" title="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" aria-label="YouTube" title="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>{t('footer.address')}</h4>
+        <address>
+          {TEMPLE_INFO.address}<br>
+          <a href={`tel:${TEMPLE_INFO.phone}`}>{TEMPLE_INFO.phone}</a><br>
+          <a href={`mailto:${TEMPLE_INFO.email}`}>{TEMPLE_INFO.email}</a>
+        </address>
+      </div>
+      
+      <div class="footer-col">
+        <h4>{t('footer.timings')}</h4>
+        <p>
+          <strong>Weekdays:</strong><br>
+          {TEMPLE_INFO.timings.weekdays}
+        </p>
+        <p>
+          <strong>Weekends & Holidays:</strong><br>
+          {TEMPLE_INFO.timings.weekends}
+        </p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/events">Events</a></li>
+          <li><a href="/poojas">Poojas</a></li>
+          <li><a href="/donate">Donate</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} {SITE.name}. {t('footer.rights')}.</p>
+    </div>
+  </div>
+  
+  <BackToTop />
+</footer>
+
+<style>
+  .footer {
+    background-color: #f5f0ea;
+    color: #333;
+    padding: 3rem 0 1rem;
+    margin-top: 3rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .footer h3 {
+    color: #8b0000;
+    margin-top: 0;
+  }
+  
+  .footer-col h4 {
+    color: #8b0000;
+    border-bottom: 2px solid #e6c9a8;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-links a {
+    color: #8b0000;
+    transition: color 0.3s;
+  }
+  
+  .social-links a:hover {
+    color: #5a0000;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-links a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-links a:hover {
+    color: #8b0000;
+  }
+  
+  address {
+    font-style: normal;
+    line-height: 1.6;
+  }
+  
+  address a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  address a:hover {
+    color: #8b0000;
+  }
+  
+  .footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e6c9a8;
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import { SITE } from '../config';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import '../styles/global.css';
+
+const { title, description, image, frontmatter, robots } = Astro.props;
+
+const siteTitle = title ? `${title} | ${SITE.title}` : SITE.title;
+const siteDescription = description || SITE.description;
+const siteImage = image || SITE.image;
+---
+
+<!DOCTYPE html>
+<html lang={Astro.props.lang || 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <SEO
+      title={siteTitle}
+      description={siteDescription}
+      image={siteImage}
+      frontmatter={frontmatter}
+      robots={robots}
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <slot />
+    </main>
+    
+    <Footer />
+    
+    <script is:inline>
+      // Add any site-wide JavaScript here
+    </script>
+  </body>
+</html>

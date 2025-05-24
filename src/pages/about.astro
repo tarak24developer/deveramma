@@ -1,0 +1,207 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import HeroBanner from '../components/HeroBanner.astro';
+import { SITE } from '../config';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = "About Our Temple";
+---
+
+<MainLayout title={pageTitle} description="Learn about the history, significance, and heritage of Deveramma Temple">
+  <HeroBanner 
+    title={t('about.title')}
+    image="/images/temple/temple-inside.jpg"
+  />
+  
+  <section class="page-content">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>{t('about.history')}</h2>
+          <p>
+            Deveramma Temple has a rich history dating back to the early 12th century. The temple was established 
+            as a tribute to Goddess Deveramma, a powerful manifestation of divine feminine energy. According to 
+            local legends, the temple site was chosen after the deity appeared in the dreams of a local ruler, 
+            instructing him to build her abode at this specific location.
+          </p>
+          <p>
+            Over the centuries, the temple has withstood various historical events, including natural calamities 
+            and invasions, yet has remained a symbol of resilience and spiritual strength. The temple has been 
+            renovated and expanded multiple times while preserving its original architectural elements and spiritual significance.
+          </p>
+          <p>
+            Through generations, Deveramma Temple has been a center for religious practices, cultural events, and 
+            community gatherings. The traditions carefully preserved by successive temple authorities have ensured 
+            that the authentic rituals and ceremonies continue to be performed with the same devotion and precision.
+          </p>
+        </div>
+        
+        <div class="about-image">
+          <img src="/images/temple/temple-front.jpg" alt="Deveramma Temple Historical View" class="rounded-image">
+        </div>
+      </div>
+      
+      <hr class="divider">
+      
+      <div class="about-grid reversed">
+        <div class="about-content">
+          <h2>{t('about.deity')}</h2>
+          <p>
+            Goddess Deveramma is revered as a powerful manifestation of divine feminine energy, representing 
+            protection, prosperity, and spiritual enlightenment. The main deity in the temple is depicted in 
+            a serene pose, blessing devotees with her divine grace and removing obstacles from their paths.
+          </p>
+          <p>
+            The Goddess is believed to have special powers to fulfill the wishes of her true devotees, particularly 
+            in matters of health, prosperity, and spiritual growth. Many devotees have reported miraculous experiences 
+            after praying at the temple with pure devotion.
+          </p>
+          <p>
+            The idol of Goddess Deveramma is made of a special combination of herbs, stones, and metals known for 
+            their spiritual properties. The energy emanating from the deity is believed to purify the environment 
+            and bring peace to those who meditate in her presence.
+          </p>
+        </div>
+        
+        <div class="about-image">
+          <img src="/images/temple/deity.jpg" alt="Goddess Deveramma Deity" class="rounded-image">
+        </div>
+      </div>
+      
+      <hr class="divider">
+      
+      <div class="architecture-section">
+        <h2 class="text-center">{t('about.architecture')}</h2>
+        <p class="text-center mb-5">
+          Deveramma Temple showcases a beautiful blend of traditional architectural styles with intricately carved pillars, 
+          majestic towers (gopurams), and sacred spaces designed according to ancient temple architecture principles.
+        </p>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Main Sanctum</h3>
+            <p>
+              The Garbhagriha (main sanctum) houses the deity and is designed to concentrate spiritual energy. 
+              The inner walls are adorned with religious symbols and mantras.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>Temple Tower</h3>
+            <p>
+              The Gopuram (temple tower) rises majestically, adorned with intricate sculptures depicting 
+              various deities and mythological stories.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>Pillared Hall</h3>
+            <p>
+              The Mandapam (pillared hall) features beautifully carved pillars with motifs of flowers, 
+              celestial beings, and geometric patterns.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>Sacred Water Tank</h3>
+            <p>
+              The temple complex includes a sacred water tank used for special rituals and believed 
+              to have healing properties.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 3rem 0;
+  }
+  
+  .about-grid.reversed {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .about-grid.reversed .about-image {
+    order: -1;
+  }
+  
+  .about-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-content p {
+    margin-bottom: 1rem;
+  }
+  
+  .about-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .divider {
+    margin: 4rem 0;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(139, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  }
+  
+  .architecture-section {
+    margin: 3rem 0;
+  }
+  
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .feature-card {
+    padding: 2rem;
+    background-color: var(--bg-alt-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .about-grid,
+    .about-grid.reversed {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .about-grid.reversed .about-image {
+      order: 1;
+    }
+    
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .divider {
+      margin: 3rem 0;
+    }
+  }
+</style>

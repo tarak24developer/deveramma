@@ -1,0 +1,261 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import HeroBanner from '../components/HeroBanner.astro';
+import Card from '../components/Card.astro';
+import { events, eventCategories, sortEventsByCategory } from '../data/events';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = "Temple Events";
+
+// Get category from URL query param (default to 'all')
+const category = Astro.url.searchParams.get('category') || 'all';
+
+// Filter events based on category
+let filteredEvents = events;
+if (category !== 'all') {
+  filteredEvents = events.filter(event => event.category === category);
+}
+
+// Sort events by date
+filteredEvents = [...filteredEvents].sort((a, b) => {
+  const dateA = new Date(a.date.split('-')[0]);
+  const dateB = new Date(b.date.split('-')[0]);
+  return dateA - dateB;
+});
+---
+
+<MainLayout title={pageTitle} description="Explore upcoming events, festivals, and celebrations at Deveramma Temple">
+  <HeroBanner 
+    title={t('events.title')}
+    image="/images/temple/temple-inside.jpg"
+  />
+  
+  <section class="page-content">
+    <div class="container">
+      <div class="calendar-intro">
+        <p class="text-center mb-4">
+          Deveramma Temple hosts various events throughout the year, including major festivals, 
+          monthly ceremonies, and community programs. Join us in celebrating these auspicious occasions.
+        </p>
+        
+        <div class="filter-buttons">
+          {Object.entries(eventCategories).map(([key, label]) => (
+            <a 
+              href={`/events?category=${key}`}
+              class={`filter-btn ${category === key ? 'active' : ''}`}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      <div class="events-grid">
+        {filteredEvents.length > 0 ? (
+          filteredEvents.map(event => (
+            <Card 
+              title={event.title}
+              image={event.image}
+              url={`/events/${event.id}`}
+            >
+              <p class="event-date"><strong>{event.date}</strong> • {event.time}</p>
+              <p>{event.description}</p>
+            </Card>
+          ))
+        ) : (
+          <div class="no-events">
+            <p>No events found in this category. Please check back later or view all events.</p>
+            <a href="/events" class="btn btn-primary mt-3">View All Events</a>
+          </div>
+        )}
+      </div>
+      
+      <div class="calendar-section mt-5">
+        <h2 class="text-center mb-4">Event Calendar</h2>
+        <p class="text-center mb-4">
+          Plan your visit to the temple by checking our event calendar. For more details 
+          about specific events, please click on the event cards above.
+        </p>
+        
+        <div class="calendar-notice">
+          <h3>Important Annual Celebrations</h3>
+          <ul class="event-list">
+            <li>
+              <span class="event-list-date">January 14-15</span>
+              <span class="event-list-name">Sankranti Celebrations</span>
+            </li>
+            <li>
+              <span class="event-list-date">March/April</span>
+              <span class="event-list-name">New Year Celebrations (based on lunar calendar)</span>
+            </li>
+            <li>
+              <span class="event-list-date">June 15-21</span>
+              <span class="event-list-name">Annual Temple Festival</span>
+            </li>
+            <li>
+              <span class="event-list-date">August/September</span>
+              <span class="event-list-name">Ganesh Chaturthi</span>
+            </li>
+            <li>
+              <span class="event-list-date">October/November</span>
+              <span class="event-list-name">Diwali Celebrations</span>
+            </li>
+          </ul>
+          
+          <h3 class="mt-4">Monthly & Weekly Events</h3>
+          <ul class="event-list">
+            <li>
+              <span class="event-list-date">Full Moon Day</span>
+              <span class="event-list-name">Special Full Moon Pooja</span>
+            </li>
+            <li>
+              <span class="event-list-date">Every Friday</span>
+              <span class="event-list-name">Goddess Special Abhishekam</span>
+            </li>
+            <li>
+              <span class="event-list-date">First Sunday</span>
+              <span class="event-list-name">Community Meal & Bhajan Session</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="custom-events-box mt-5">
+          <h3>Request a Special Ceremony</h3>
+          <p>
+            Looking to host a personal ceremony at the temple? We offer facilities for various 
+            life events like naming ceremonies, marriages, and special poojas.
+          </p>
+          <a href="/contact?subject=Event%20Request" class="btn btn-primary mt-3">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .calendar-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    background-color: #f5f0ea;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .event-date {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .no-events {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--bg-alt-color);
+    border-radius: var(--border-radius);
+  }
+  
+  .calendar-section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .calendar-notice {
+    background-color: var(--bg-alt-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+  }
+  
+  .calendar-notice h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+  
+  .event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .event-list li {
+    display: flex;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e6c9a8;
+  }
+  
+  .event-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .event-list-date {
+    min-width: 150px;
+    font-weight: 600;
+  }
+  
+  .custom-events-box {
+    text-align: center;
+    background-color: #f9f5f0;
+    border: 2px dashed #e6c9a8;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+  }
+  
+  .custom-events-box h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .event-list li {
+      flex-direction: column;
+    }
+    
+    .event-list-date {
+      min-width: unset;
+      margin-bottom: 0.25rem;
+    }
+    
+    .filter-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .filter-btn {
+      width: 80%;
+      text-align: center;
+    }
+  }
+</style>
