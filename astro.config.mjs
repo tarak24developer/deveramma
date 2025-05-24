@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://deveramma-temple.com',
+  site: 'https://deveramma.org',
   integrations: [sitemap()]
 });
