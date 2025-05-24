@@ -1,0 +1,64 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getLocalizedPath } from '../../i18n/utils';
+
+// Set language attribute for the HTML tag
+const htmlLang = "te";
+---
+
+<MainLayout title="పేజీ కనుగొనబడలేదు" description="మీరు వెతుకుతున్న పేజీ కనుగొనబడలేదు." lang={htmlLang}>
+  <div class="error-container">
+    <h1>404</h1>
+    <h2>పేజీ కనుగొనబడలేదు</h2>
+    <p>మీరు వెతుకుతున్న పేజీ ఉనికిలో లేదు లేదా తరలించబడింది.</p>
+    <div class="error-actions">
+      <a href={getLocalizedPath('/', 'te')} class="btn btn-primary">హోమ్‌కి తిరిగి వెళ్ళండి</a>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .error-container {
+    text-align: center;
+    padding: 8rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: 8rem;
+    margin: 0;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .error-actions {
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .error-container {
+      padding: 4rem 1rem;
+    }
+    
+    h1 {
+      font-size: 6rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

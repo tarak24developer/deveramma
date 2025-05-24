@@ -1,0 +1,323 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SITE, TEMPLE_INFO } from '../../config';
+import HeroBanner from '../../components/HeroBanner.astro';
+import Card from '../../components/Card.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+// Set language attribute for the HTML tag
+const htmlLang = "te";
+
+const upcomingEvents = [
+  {
+    title: 'త్రైమాసిక వేడుక',
+    date: 'మే 09-11, 2025',
+    image: '/images/temple/temple-front.jpg',
+    description: 'మా 3 రోజుల త్రైమాసిక దేవాలయ వేడుకలో ప్రత్యేక పూజలు, ఆరాధనలతో పాల్గొనండి.',
+    url: '/te/events/quarterly-festival'
+  },
+  {
+    title: 'దసరా వేడుకలు',
+    date: 'సెప్టెంబర్ 22-అక్టోబర్ 02, 2025',
+    image: '/images/pooja/special-pooja.jpg',
+    description: 'దసరా సందర్భంగా ప్రత్యేక పూజలు, అవతారాలు మరియు నైవేద్యాలు.',
+    url: '/te/events/dusshera-celebration'
+  }
+];
+---
+
+<MainLayout title={SITE.title} description={SITE.description} lang={htmlLang}>
+  <HeroBanner 
+    title={t('home.welcome')}
+    subtitle={t('home.subtitle')}
+    image="/images/temple/temple-front.jpg"
+  />
+  
+  <section class="temple-intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-content">
+          <h2>మేరుగ వారి దేవరమ్మ దేవాలయానికి స్వాగతం</h2>
+          <p>
+            మేరుగ వారి దేవరమ్మ దేవాలయం ఆంధ్రప్రదేశ్‌లోని విజయవాడ నగరానికి సమీపంలోని మంటాడ గ్రామంలో ఉంది.
+            ఇది దేవరమ్మ దేవిని పూజించడానికి అంకితం చేయబడిన పవిత్ర ప్రదేశం, ఆమె దీవెనలకు మరియు అద్భుతాలకు ప్రసిద్ధి చెందిన దేవత, మేరుగ కుటుంబం ద్వారా పూజించబడుతుంది.
+          </p>
+          <p>
+            శతాబ్దాల సమృద్ధమైన చరిత్ర కలిగిన ఈ దేవాలయం ప్రార్థనకు ప్రశాంతమైన వాతావరణాన్ని అందిస్తూనే ప్రాచీన ఆచారాలు మరియు సంప్రదాయాలను కాపాడుతుంది.
+          </p>          <div class="intro-buttons">
+            <a href="/te/about" class="btn btn-primary">మా దేవాలయం గురించి తెలుసుకోండి</a>
+            <a href="/te/contact" class="btn btn-outline">మీ సందర్శనను ప్రణాళిక చేయండి</a>
+          </div>
+        </div>
+        <div class="intro-image">
+          <img src="/images/temple/deity.jpg" alt="దేవరమ్మ దేవత" class="rounded-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="events-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>రాబోయే కార్యక్రమాలు</h2>
+        <p>దేవాలయంలో ఈ ప్రత్యేక సందర్భాలలో పాల్గొనండి</p>
+      </div>
+      
+      <div class="cards-grid">
+        {upcomingEvents.map(event => (
+          <Card 
+            title={event.title}
+            image={event.image}
+            alt={event.title}
+            url={event.url}
+          >
+            <p><strong>{event.date}</strong></p>
+            <p>{event.description}</p>
+            <span slot="link-text">వేడుక వివరాలు</span>
+          </Card>
+        ))}
+      </div>
+        <div class="section-footer">
+        <a href="/te/events" class="btn btn-secondary">అన్ని వేడుకలను చూడండి</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>దేవాలయ సేవలు</h2>
+        <p>భక్తుల కోసం ఆధ్యాత్మిక సేవలు మరియు నైవేద్యాలు</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          </div>
+          <h3>రోజువారీ పూజలు</h3>
+          <p>దైవ దీవెనలను పొందడానికి మా పూజారులు నిర్వహించే నియమిత ఆచారాలు.</p>
+          <a href="/te/poojas" class="link-arrow">మరింత తెలుసుకోండి</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <h3>ప్రత్యేక పూజలు</h3>
+          <p>ముఖ్యమైన జీవిత ఘటనలు మరియు ఆధ్యాత్మిక మైలురాళ్లకు వ్యక్తిగతీకరించబడిన సంస్కారాలు.</p>
+          <a href="/te/poojas#special" class="link-arrow">మరింత తెలుసుకోండి</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+          </div>
+          <h3>సామూహిక కార్యక్రమాలు</h3>
+          <p>సాంస్కృతిక కార్యక్రమాలు, ఆధ్యాత్మిక ప్రసంగాలు మరియు సామాజిక సేవా కార్యక్రమాలు.</p>
+          <a href="/te/events#community" class="link-arrow">మరింత తెలుసుకోండి</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="timings-section">
+    <div class="container">
+      <div class="timings-box">
+        <div class="timings-content">
+          <h2>దేవాలయం సమయాలు</h2>
+          <div class="timings-grid">
+            <div>
+              <h4>వారపు రోజులు</h4>
+              <p>{TEMPLE_INFO.timings.weekdays}</p>
+            </div>
+            <div>
+              <h4>వారాంతాలు & సెలవు దినాలు</h4>
+              <p>{TEMPLE_INFO.timings.weekends}</p>
+            </div>
+          </div>
+          <a href="/te/contact" class="btn btn-white">మీ సందర్శనను ప్రణాళిక చేయండి</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  /* Section Styling */
+  section {
+    padding: 4rem 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    color: #8b0000;
+    margin-bottom: 0.5rem;
+  }
+  
+  .section-footer {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  /* Temple Intro Section */
+  .temple-intro {
+    background-color: #f9f5f0;
+  }
+  
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .intro-content h2 {
+    color: #8b0000;
+    margin-bottom: 1.5rem;
+  }
+  
+  .intro-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .intro-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .intro-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cards Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  /* Services Section */
+  .services-section {
+    background-color: #fff;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .service-card {
+    background-color: #f9f5f0;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .service-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #8b0000;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .service-card h3 {
+    color: #8b0000;
+    margin-bottom: 1rem;
+  }
+  
+  .link-arrow {
+    color: #8b0000;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+  
+  .link-arrow::after {
+    content: "→";
+    margin-left: 0.5rem;
+    transition: transform 0.3s;
+  }
+  
+  .link-arrow:hover::after {
+    transform: translateX(3px);
+  }
+  
+  /* Timings Section */
+  .timings-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/temple/temple-inside.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+  
+  .timings-box {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: rgba(139, 0, 0, 0.8);
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .timings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .timings-box h2 {
+    margin-top: 0;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .intro-grid,
+    .timings-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .intro-buttons {
+      flex-direction: column;
+    }
+    
+    .intro-image {
+      order: -1;
+    }
+    
+    section {
+      padding: 3rem 0;
+    }
+  }
+</style>

@@ -1,6 +1,5 @@
 export const languages = {
   en: 'English',
-  hi: 'हिन्दी',
   te: 'తెలుగు',
 };
 
@@ -49,30 +48,7 @@ export const ui = {
     'contact.form': 'Contact Form',
     'contact.location': 'Our Location',
   },
-  
-  hi: {
-    'nav.home': 'मुख्य पृष्ठ',
-    'nav.about': 'हमारे बारे में',
-    'nav.events': 'कार्यक्रम',
-    'nav.poojas': 'पूजाएं',
-    'nav.gallery': 'गैलरी',
-    'nav.donate': 'दान करें',
-    'nav.contact': 'संपर्क करें',
-    
-    'home.welcome': 'देवरम्मा मंदिर में आपका स्वागत है',
-    'home.subtitle': 'भक्ति के लिए एक पवित्र स्थान',
-    'home.visit': 'यात्रा की योजना बनाएं',
-    'home.offerings': 'भेंट चढ़ाएं',
-    
-    'footer.rights': 'सर्वाधिकार सुरक्षित',
-    'footer.address': 'पता',
-    'footer.timings': 'मंदिर का समय',
-    'footer.contact': 'संपर्क जानकारी',
-    
-    // Add more Hindi translations as needed
-  },
-  
-  te: {
+    te: {
     'nav.home': 'హోమ్',
     'nav.about': 'గురించి',
     'nav.events': 'వేడుకలు',
@@ -81,9 +57,9 @@ export const ui = {
     'nav.donate': 'విరాళం',
     'nav.contact': 'సంప్రదించండి',
     
-    'home.welcome': 'దేవరమ్మ దేవాలయంకు స్వాగతం',
+    'home.welcome': 'మేరుగ వారి దేవరమ్మ దేవాలయానికి స్వాగతం',
     'home.subtitle': 'భక్తి కోసం ఒక పవిత్ర స్థలం',
-    'home.visit': 'మీ సందర్శనను ప్రణాళిక',
+    'home.visit': 'మీ సందర్శనను ప్రణాళిక చేయండి',
     'home.offerings': 'నైవేద్యాలు సమర్పించండి',
     
     'footer.rights': 'సర్వహక్కులూ రక్షించబడినవి',
@@ -91,6 +67,27 @@ export const ui = {
     'footer.timings': 'దేవాలయం సమయాలు',
     'footer.contact': 'సంప్రదింపు సమాచారం',
     
-    // Add more Telugu translations as needed
+    'about.title': 'మా దేవాలయం గురించి',
+    'about.history': 'దేవాలయ చరిత్ర',
+    'about.deity': 'దేవత గురించి',
+    'about.architecture': 'దేవాలయ నిర్మాణ శైలి',
+    
+    'events.title': 'రాబోయే వేడుకలు',
+    'events.calendar': 'వేడుకల క్యాలెండర్',
+    'events.past': 'గత వేడుకలు',
+    
+    'poojas.title': 'పూజలు & ఆచారాలు',
+    'poojas.special': 'ప్రత్యేక పూజలు',
+    'poojas.daily': 'రోజువారీ ఆచారాలు',
+    'poojas.booking': 'పూజ బుకింగ్',
+    
+    'donate.title': 'దేవాలయానికి సహాయం చేయండి',
+    'donate.options': 'విరాళపు ఎంపికలు',
+    'donate.online': 'ఆన్‌లైన్ విరాళం',
+    'donate.receipt': 'విరాళం రసీదు',
+    
+    'contact.title': 'సంప్రదించండి',
+    'contact.form': 'సంప్రదింపు ఫారం',
+    'contact.location': 'మా స్థానం'
   }
 };
