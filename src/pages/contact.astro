@@ -176,33 +176,47 @@ const preselectedSubject = Astro.url.searchParams.get('subject') || '';
       spinner?.classList.remove('hidden');
       submitBtn?.setAttribute('disabled', 'true');
       formMessage?.classList.add('hidden');
+        // Collect form data
+      if (!form) return;
       
-      // Collect form data
+      const formElement = form as HTMLFormElement;
       const formData = {
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        subject: form.subject.value,
-        message: form.message.value,
+        name: formElement.elements.namedItem('name') as HTMLInputElement,
+        email: formElement.elements.namedItem('email') as HTMLInputElement,
+        phone: formElement.elements.namedItem('phone') as HTMLInputElement,
+        subject: formElement.elements.namedItem('subject') as HTMLSelectElement,
+        message: formElement.elements.namedItem('message') as HTMLTextAreaElement,
         timestamp: new Date().toISOString()
       };
       
-      try {
+      const formDataToSubmit = {
+        name: formData.name.value,
+        email: formData.email.value,
+        phone: formData.phone.value,
+        subject: formData.subject.value,
+        message: formData.message.value,
+        timestamp: formData.timestamp
+      };
+        try {
         // Submit form data
-        const response = await submitContactForm(formData);
+        const response = await submitContactForm(formDataToSubmit);
         
         // Show success message
-        formMessage?.classList.add('success');
-        formMessage?.classList.remove('error', 'hidden');
-        formMessage.innerHTML = response.message;
+        if (formMessage) {
+          formMessage.classList.add('success');
+          formMessage.classList.remove('error', 'hidden');
+          formMessage.innerHTML = response.message;
+        }
         
         // Reset form
-        form.reset();
-      } catch (error) {
+        formElement.reset();
+      } catch (error: any) {
         // Show error message
-        formMessage?.classList.add('error');
-        formMessage?.classList.remove('success', 'hidden');
-        formMessage.innerHTML = error.error || 'An error occurred. Please try again later.';
+        if (formMessage) {
+          formMessage.classList.add('error');
+          formMessage.classList.remove('success', 'hidden');
+          formMessage.innerHTML = (error && error.error) || 'An error occurred. Please try again later.';
+        }
       } finally {
         // Hide spinner, enable submit button
         spinner?.classList.add('hidden');
