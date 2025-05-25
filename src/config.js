@@ -15,8 +15,8 @@ export const OPEN_GRAPH = {
 };
 
 export const TEMPLE_INFO = {
-  address: 'Meruga Vari Deveramma Veedhi, Mantada, Krishna District, Andhra Pradesh - 521001',
-  phone: '+91 9666538548',
+  address: 'Meruga Vari Deveramma Veedhi, Mantada, Krishna District, Andhra Pradesh - 521256',
+  phone: '+91 9666538548, +91 8328543121',
   email: 'contact@deveramma.org',
   timings: {
     weekdays: '4:00 AM - 11:00 AM, 6:00 PM - 8:00 PM',

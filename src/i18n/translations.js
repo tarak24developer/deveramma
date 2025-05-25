@@ -36,7 +36,7 @@ export const ui = {
     
     'poojas.title': 'Poojas & Rituals',
     'poojas.special': 'Special Poojas',
-    'poojas.daily': 'Daily Rituals',
+    'poojas.weekly': 'Weekly Rituals',
     'poojas.booking': 'Book a Pooja',
     
     'donate.title': 'Support The Temple',
@@ -78,7 +78,7 @@ export const ui = {
     
     'poojas.title': 'పూజలు & ఆచారాలు',
     'poojas.special': 'ప్రత్యేక పూజలు',
-    'poojas.daily': 'రోజువారీ ఆచారాలు',
+    'poojas.weekly': 'సామాన్య ఆచారాలు',
     'poojas.booking': 'పూజ బుకింగ్',
     
     'donate.title': 'దేవాలయానికి సహాయం చేయండి',
