@@ -15,7 +15,7 @@ export const ui = {
     'nav.donate': 'Donate',
     'nav.contact': 'Contact Us',
     
-    'home.welcome': 'Welcome to Deveramma Temple',
+    'home.welcome': 'Welcome to Devaramma Temple',
     'home.subtitle': 'A Sacred Place for Devotion',
     'home.visit': 'Plan Your Visit',
     'home.offerings': 'Make Offerings',

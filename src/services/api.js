@@ -1,4 +1,4 @@
-// API service functions for Deveramma Temple website
+// API service functions for Devaramma Temple website
 // Note: This is a mock API service. In production, you would replace these functions
 // with actual API calls to your backend server.
 
@@ -104,7 +104,7 @@ export async function getAnnouncements() {
         {
           id: 1,
           title: 'Temple Hours Extended',
-          content: 'Starting June 1st, the temple will remain open until 9:00 PM on weekends.',
+          content: 'Starting June 1st, the temple will remain open until 12:00 PM daily.',
           date: '2025-05-20',
           important: true
         },
