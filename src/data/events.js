@@ -4,7 +4,7 @@ export const events = [
     title: 'Annual Temple Festival',
     date: 'June 15-21, 2025',
     time: 'All Day',
-    image: '/images/temple/temple-front.jpg',
+    image: '/images/temple/temple-front.png',
     description: 'Join us for our 7-day annual temple festival with special poojas, cultural programs, processions, and more. This is the most important celebration of the year at our temple.',
     longDescription: `The Annual Temple Festival is our most significant celebration honoring Goddess Deveramma. The festival spans seven days filled with religious ceremonies, cultural performances, and community gatherings.
 

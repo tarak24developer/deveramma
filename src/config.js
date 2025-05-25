@@ -9,7 +9,7 @@ export const SITE = {
 
 export const OPEN_GRAPH = {
   image: {
-    src: '/images/temple/temple-front.jpg',
+    src: '/images/temple/temple-front.png',
     alt: 'Deveramma Temple Front View'
   }
 };
