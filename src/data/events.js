@@ -4,9 +4,9 @@ export const events = [
     title: 'Annual Temple Festival',
     date: 'June 15-21, 2025',
     time: 'All Day',
-    image: '/images/temple/temple-front.jpg',
+    image: '/images/temple/temple-front.png',
     description: 'Join us for our 7-day annual temple festival with special poojas, cultural programs, processions, and more. This is the most important celebration of the year at our temple.',
-    longDescription: `The Annual Temple Festival is our most significant celebration honoring Goddess Deveramma. The festival spans seven days filled with religious ceremonies, cultural performances, and community gatherings.
+    longDescription: `The Annual Temple Festival is our most significant celebration honoring Goddess Devaramma. The festival spans seven days filled with religious ceremonies, cultural performances, and community gatherings.
 
 Each day begins with special rituals at dawn and continues throughout the day with various events. The highlight is the chariot procession on the sixth day when the deity is taken around the temple complex in an ornate chariot, blessing devotees and the surroundings.
 
@@ -48,7 +48,7 @@ Beyond competitions, the festival includes workshops on temple architecture, myt
     time: 'Various Times',
     image: '/images/pooja/weekly-pooja.jpg',
     description: 'Nine nights of celebration honoring the divine feminine energy through special poojas, music, dance, and decorations.',
-    longDescription: `Navratri (nine nights) is a significant festival dedicated to the worship of the divine mother in her various forms. At Deveramma Temple, these nine nights are celebrated with special decorations, elaborate rituals, and cultural programs.
+    longDescription: `Navratri (nine nights) is a significant festival dedicated to the worship of the divine mother in her various forms. At Devaramma Temple, these nine nights are celebrated with special decorations, elaborate rituals, and cultural programs.
 
 Each night features a special pooja dedicated to a different form of the goddess, followed by devotional music and dance performances. The temple premises are adorned with colorful decorations, flower arrangements, and traditional art forms creating a festive atmosphere.
 

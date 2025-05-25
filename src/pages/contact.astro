@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
-import { SITE, TEMPLE_INFO } from '../config';
+import { SITE, TEMPLE_INFO, SOCIAL_MEDIA } from '../config';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -20,10 +20,10 @@ const subjectOptions = [
 const preselectedSubject = Astro.url.searchParams.get('subject') || '';
 ---
 
-<MainLayout title={pageTitle} description="Contact Deveramma Temple for inquiries about services, events, or to plan your visit">
+<MainLayout title={pageTitle} description="Contact Devaramma Temple for inquiries about services, events, or to plan your visit">
   <HeroBanner 
     title={t('contact.title')}
-    image="/images/temple/temple-front.jpg"
+    image="/images/temple/temple-front.png"
   />
   
   <section class="page-content">
@@ -90,7 +90,7 @@ const preselectedSubject = Astro.url.searchParams.get('subject') || '';
             <div class="info-text">
               <h3>Address</h3>
               <p>{TEMPLE_INFO.address}</p>
-              <a href="https://maps.google.com/?q=Deveramma+Temple" target="_blank" rel="noopener noreferrer" class="link-arrow">Get Directions</a>
+              <a href="https://maps.app.goo.gl/cd8sSVZLX4MiR4DG6" target="_blank" rel="noopener noreferrer" class="link-arrow">Get Directions</a>
             </div>
           </div>
           
@@ -117,39 +117,40 @@ const preselectedSubject = Astro.url.searchParams.get('subject') || '';
           <div class="info-card">
             <div class="info-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            </div>
-            <div class="info-text">
+            </div>            <div class="info-text">
               <h3>Temple Hours</h3>
-              <p><strong>Weekdays:</strong><br>{TEMPLE_INFO.timings.weekdays}</p>
-              <p><strong>Weekends:</strong><br>{TEMPLE_INFO.timings.weekends}</p>
+              <p><strong>Daily:</strong><br>{TEMPLE_INFO.timings.daily}</p>
             </div>
           </div>
-          
-          <div class="social-links">
-            <a href="#" aria-label="Facebook" title="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </a>
-            <a href="#" aria-label="Instagram" title="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="#" aria-label="YouTube" title="YouTube">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-            </a>
+            <div class="info-card">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </div>
+            <div class="info-text">
+              <h3>Follow Us</h3>
+              <p>Stay updated with temple events and activities</p>
+              <div class="social-links">
+                <a href={SOCIAL_MEDIA.instagram} target="_blank" rel="noopener noreferrer" title="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg>
+                </a>
+                <a href={SOCIAL_MEDIA.youtube} target="_blank" rel="noopener noreferrer" title="YouTube">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="map-container mt-5">
-        <h2 class="text-center mb-4">Our Location</h2>
-        <div class="map-responsive">
-          <!-- Replace with actual Google Maps embed code when available -->
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.985594191971!2d77.5945627148835!3d12.971598990855124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBangalore%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sus!4v1653321749555!5m2!1sen!2sus"
+        <h2 class="text-center mb-4">Our Location</h2>        <div class="map-responsive">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d239.272650362376!2d80.87662294809961!3d16.35549101712069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3601ea09e9ccef%3A0xf379cdfd61fdbff!2sMeruga%20Vari%20Devaramma!5e0!3m2!1sen!2sin!4v1748099283225!5m2!1sen!2sin" 
             width="100%"
             height="450"
             style="border:0;"
             allowfullscreen=""
-            loading="lazy"
+            loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
@@ -175,33 +176,47 @@ const preselectedSubject = Astro.url.searchParams.get('subject') || '';
       spinner?.classList.remove('hidden');
       submitBtn?.setAttribute('disabled', 'true');
       formMessage?.classList.add('hidden');
+        // Collect form data
+      if (!form) return;
       
-      // Collect form data
+      const formElement = form as HTMLFormElement;
       const formData = {
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        subject: form.subject.value,
-        message: form.message.value,
+        name: formElement.elements.namedItem('name') as HTMLInputElement,
+        email: formElement.elements.namedItem('email') as HTMLInputElement,
+        phone: formElement.elements.namedItem('phone') as HTMLInputElement,
+        subject: formElement.elements.namedItem('subject') as HTMLSelectElement,
+        message: formElement.elements.namedItem('message') as HTMLTextAreaElement,
         timestamp: new Date().toISOString()
       };
       
-      try {
+      const formDataToSubmit = {
+        name: formData.name.value,
+        email: formData.email.value,
+        phone: formData.phone.value,
+        subject: formData.subject.value,
+        message: formData.message.value,
+        timestamp: formData.timestamp
+      };
+        try {
         // Submit form data
-        const response = await submitContactForm(formData);
+        const response = await submitContactForm(formDataToSubmit);
         
         // Show success message
-        formMessage?.classList.add('success');
-        formMessage?.classList.remove('error', 'hidden');
-        formMessage.innerHTML = response.message;
+        if (formMessage) {
+          formMessage.classList.add('success');
+          formMessage.classList.remove('error', 'hidden');
+          formMessage.innerHTML = response.message;
+        }
         
         // Reset form
-        form.reset();
-      } catch (error) {
+        formElement.reset();
+      } catch (error: any) {
         // Show error message
-        formMessage?.classList.add('error');
-        formMessage?.classList.remove('success', 'hidden');
-        formMessage.innerHTML = error.error || 'An error occurred. Please try again later.';
+        if (formMessage) {
+          formMessage.classList.add('error');
+          formMessage.classList.remove('success', 'hidden');
+          formMessage.innerHTML = (error && error.error) || 'An error occurred. Please try again later.';
+        }
       } finally {
         // Hide spinner, enable submit button
         spinner?.classList.add('hidden');

@@ -1,0 +1,214 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import HeroBanner from '../../components/HeroBanner.astro';
+import { SITE } from '../../config';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = "మా దేవాలయం గురించి";
+// Set language attribute for the HTML tag
+const htmlLang = "te";
+---
+
+<MainLayout title={pageTitle} description="దేవరమ్మ దేవాలయం యొక్క చరిత్ర, ప్రాముఖ్యత మరియు సంప్రదాయాల గురించి తెలుసుకోండి" lang={htmlLang}>
+  <HeroBanner 
+    title={t('about.title')}
+    image="/images/temple/temple-inside.jpg"
+  />
+  
+  <section class="page-content">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>{t('about.history')}</h2>
+          <p>
+            దేవరమ్మ దేవాలయం 12వ శతాబ్దం నాటి సంపన్న చరిత్రను కలిగి ఉంది. ఈ దేవాలయం 
+            దేవరమ్మ దేవికి సమర్పించబడింది, ఆమె ఒక శక్తివంతమైన దైవిక స్త్రీ శక్తి అవతారం. స్థానిక
+            కథనాల ప్రకారం, ఆమె ఒక స్థానిక పాలకుడి కలలో ప్రత్యక్షమై, ఈ ప్రత్యేక స్థలంలో ఆమె 
+            ఆలయాన్ని నిర్మించమని ఆదేశించినందున దేవాలయ స్థలం ఎంచుకోబడింది.
+          </p>
+          <p>
+            శతాబ్దాలుగా, దేవాలయం వివిధ చారిత్రక సంఘటనలను, సహజ విపత్తులను మరియు
+            దాడులను ఎదుర్కొన్నప్పటికీ, ఇది స్థిరత్వం మరియు ఆధ్యాత్మిక శక్తికి ప్రతీకగా నిలిచింది.
+            దేవాలయం దాని అసలు నిర్మాణ అంశాలను మరియు ఆధ్యాత్మిక ప్రాముఖ్యతను కాపాడుతూనే
+            అనేక సార్లు నవీకరించబడింది మరియు విస్తరించబడింది.
+          </p>
+          <p>
+            తరాల తరబడి, దేవరమ్మ దేవాలయం మత ఆచారాలకు, సాంస్కృతిక కార్యక్రమాలకు మరియు 
+            సామాజిక సమావేశాలకు కేంద్రంగా ఉంది. వరుసగా దేవాలయ అధికారులు జాగ్రత్తగా సంరక్షించిన
+            సంప్రదాయాలు, ప్రామాణిక ఆచారాలు మరియు సంస్కారాలు అదే భక్తితో మరియు ఖచ్చితత్వంతో
+            కొనసాగుతున్నాయని నిర్ధారిస్తున్నాయి.
+          </p>
+        </div>
+        
+        <div class="about-image">
+          <img src="/images/temple/temple-front.png" alt="దేవరమ్మ దేవాలయం చారిత్రక దృశ్యం" class="rounded-image">
+        </div>
+      </div>
+      
+      <hr class="divider">
+      
+      <div class="about-grid reversed">
+        <div class="about-content">
+          <h2>{t('about.deity')}</h2>
+          <p>
+            దేవరమ్మ దేవి దైవిక స్త్రీ శక్తి యొక్క శక్తివంతమైన అవతారంగా పూజించబడుతుంది, రక్షణను,
+            సంపదను మరియు ఆధ్యాత్మిక జ్ఞానోదయాన్ని సూచిస్తుంది. దేవాలయంలోని ప్రధాన దేవత
+            ప్రశాంతమైన భంగిమలో చిత్రించబడి, భక్తులకు ఆమె దైవిక దయతో ఆశీర్వదిస్తూ మరియు
+            వారి మార్గాలలో ఉన్న అడ్డంకులను తొలగిస్తోంది.
+          </p>
+          <p>
+            దేవత తన నిజమైన భక్తుల కోరికలను నెరవేర్చడానికి, ముఖ్యంగా ఆరోగ్యం, సంపద
+            మరియు ఆధ్యాత్మిక వృద్ధి విషయాలలో ప్రత్యేక శక్తులను కలిగి ఉందని నమ్ముతారు. చాలా మంది
+            భక్తులు నిజమైన భక్తితో దేవాలయంలో ప్రార్థన చేసిన తర్వాత అద్భుతమైన అనుభవాలను
+            నివేదించారు.
+          </p>
+          <p>
+            దేవరమ్మ దేవి విగ్రహం వారి ఆధ్యాత్మిక లక్షణాల కోసం తెలిసిన మూలికలు, రాళ్లు మరియు
+            లోహాల యొక్క ప్రత్యేక మిశ్రమంతో చేయబడింది. దేవత నుండి వచ్చే శక్తి పర్యావరణాన్ని
+            శుద్ధి చేస్తుందని మరియు ఆమె సన్నిధిలో ధ్యానం చేసేవారికి శాంతిని తెస్తుందని నమ్ముతారు.
+          </p>
+        </div>
+        
+        <div class="about-image">
+          <img src="/images/temple/deity.png" alt="దేవరమ్మ దేవి విగ్రహం" class="rounded-image">
+        </div>
+      </div>
+      
+      <hr class="divider">
+      
+      <div class="architecture-section">
+        <h2 class="text-center">{t('about.architecture')}</h2>
+        <p class="text-center mb-5">
+          దేవరమ్మ దేవాలయం పూర్వీక దేవాలయ నిర్మాణ సంప్రదాయ నియమాల ప్రకారం రూపొందించబడిన
+          సూక్ష్మంగా చెక్కిన స్తంభాలు, ఉన్నతమైన గోపురాలు మరియు పవిత్ర ప్రదేశాలతో సాంప్రదాయ
+          వాస్తు శైలుల అందమైన మిశ్రమాన్ని చూపిస్తుంది.
+        </p>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>ప్రధాన గర్భాలయం</h3>
+            <p>
+              గర్భగృహంలో (ప్రధాన గర్భాలయం) దేవత నివసిస్తుంది మరియు ఆధ్యాత్మిక శక్తిని కేంద్రీకరించడానికి
+              రూపొందించబడింది. లోపలి గోడలు మతపరమైన చిహ్నాలు మరియు మంత్రాలతో అలంకరించబడి ఉన్నాయి.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>దేవాలయ గోపురం</h3>
+            <p>
+              గోపురం (దేవాలయ గోపురం) భవ్యంగా ఎత్తుగా నిలుస్తుంది, వివిధ దేవతలు మరియు
+              పౌరాణిక కథలను చిత్రించే సూక్ష్మమైన శిల్పాలతో అలంకరించబడింది.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>స్తంభాల మండపం</h3>
+            <p>
+              మండపం (స్తంభాల హాలు) పూలు, దేవదూతలు మరియు జ్యామితీయ నమూనాల
+              రూపాలతో అందంగా చెక్కిన స్తంభాలను కలిగి ఉంది.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>పవిత్ర జల చెరువు</h3>
+            <p>
+              దేవాలయ సముదాయంలో ప్రత్యేక ఆచారాలకు ఉపయోగించే మరియు సౌఖ్య లక్షణాలను
+              కలిగి ఉందని నమ్మబడే పవిత్ర జల చెరువు ఉంది.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 3rem 0;
+  }
+  
+  .about-grid.reversed {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .about-grid.reversed .about-image {
+    order: -1;
+  }
+  
+  .about-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-content p {
+    margin-bottom: 1rem;
+  }
+  
+  .about-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .divider {
+    margin: 4rem 0;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(139, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  }
+  
+  .architecture-section {
+    margin: 3rem 0;
+  }
+  
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .feature-card {
+    padding: 2rem;
+    background-color: var(--bg-alt-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .about-grid,
+    .about-grid.reversed {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .about-grid.reversed .about-image {
+      order: 1;
+    }
+    
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .divider {
+      margin: 3rem 0;
+    }
+  }
+</style>

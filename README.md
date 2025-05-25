@@ -1,35 +1,46 @@
-# Astro Starter Kit: Minimal
+# Meruga Vari Deveramma Temple Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+This repository contains the official website for the Meruga Vari Deveramma Temple, located in Mantada village near Vijayawada city in Andhra Pradesh, India.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+##  About the Temple
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Deveramma Temple has a rich history dating back to the early 1900s. The temple was initially considered as Meruga Venkateswara Rao Garu's **Thaataku Illu**. In the 2000s, Meruga Venkata Subbaiah Garu's grandson, Meruga Rajesh Garu, built the temple building on August 29, 2007, as an act of devotion towards Deveramma.
 
-## 🚀 Project Structure
+The temple is dedicated to the worship of Goddess Deveramma, a revered deity known for her blessings and miracles, particularly worshiped by the Meruga family.
 
-Inside of your Astro project, you'll see the following folders and files:
+##  Website Features
+
+- Multilingual support (English and Telugu)
+- Information about temple history, deity, and architecture
+- Temple services and poojas
+- Events calendar
+- Photo gallery
+- Contact information and visit planning assistance
+- Donation options
+
+##  Technical Implementation
+
+This website is built with [Astro](https://astro.build), a modern web framework for building fast, content-focused websites.
+
+### Project Structure
 
 ```text
 /
-├── public/
+├── public/          # Static assets (images, favicon, etc.)
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/  # Reusable UI components
+│   ├── data/        # Data files for events, etc.
+│   ├── i18n/        # Internationalization files
+│   ├── layouts/     # Page layouts
+│   ├── pages/       # All pages (routes)
+│   │   ├── en/      # English language pages
+│   │   └── te/      # Telugu language pages
+│   ├── services/    # API services
+│   └── styles/      # Global styles
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
+##  Development Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -37,11 +48,12 @@ All commands are run from the root of the project, from a terminal:
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run build`           | Build the production site to `./dist/`           |
+| `npm run preview`         | Preview the build locally, before deploying      |
 
-## 👀 Want to learn more?
+##  Contact
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+For any inquiries regarding the temple or this website, please contact us at:
+
+- Email: contact@deveramma.org
+- Phone: +91 6303252209

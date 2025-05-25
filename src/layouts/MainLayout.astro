@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../config';
+import { SITE, OPEN_GRAPH } from '../config';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
@@ -9,7 +9,7 @@ const { title, description, image, frontmatter, robots } = Astro.props;
 
 const siteTitle = title ? `${title} | ${SITE.title}` : SITE.title;
 const siteDescription = description || SITE.description;
-const siteImage = image || SITE.image;
+const siteImage = image || OPEN_GRAPH.image.src;
 ---
 
 <!DOCTYPE html>

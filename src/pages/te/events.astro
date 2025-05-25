@@ -1,0 +1,312 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import HeroBanner from '../../components/HeroBanner.astro';
+import Card from '../../components/Card.astro';
+import { events, eventCategories, sortEventsByCategory } from '../../data/events';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = "దేవాలయ వేడుకలు";
+// Set language attribute for the HTML tag
+const htmlLang = "te";
+
+// Get category from URL query param (default to 'all')
+const category = Astro.url.searchParams.get('category') || 'all';
+
+// Telugu translations for event categories
+const teluguEventCategories = {
+  all: "అన్నీ",
+  festival: "పండుగలు",
+  ritual: "ఆచారాలు",
+  community: "సామాజిక కార్యక్రమాలు",
+  special: "ప్రత్యేక వేడుకలు"
+};
+
+// Filter events based on category
+let filteredEvents = events;
+if (category !== 'all') {
+  filteredEvents = events.filter(event => event.category === category);
+}
+
+// Sort events by date
+filteredEvents = [...filteredEvents].sort((a, b) => {
+  const dateA = new Date(a.date.split('-')[0]);
+  const dateB = new Date(b.date.split('-')[0]);
+  return dateA - dateB;
+});
+
+// Translate event titles and descriptions for Telugu page
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  time?: string;
+  description: string;
+  category: string;
+  image: string;
+}
+
+const translateEvent = (event: Event): Event => {
+  // These are just example translations - in a real project, 
+  // you would want to have a more sophisticated translation system
+  const translations: Record<string, string> = {
+    "Quarter-year Festival": "త్రైమాసిక వేడుక",
+    "Dusshera Celebration": "దసరా వేడుకలు",
+    "Weekly Pooja": "వారపు పూజ",
+    "Temple Anniversary": "దేవాలయ వార్షికోత్సవం",
+    "Community Service": "సామాజిక సేవ",
+    "Join us for our 3-day quarterly temple festival with special poojas, worships and more.": 
+      "మా 3 రోజుల త్రైమాసిక దేవాలయ వేడుకలో ప్రత్యేక పూజలు, ఆరాధనలతో పాల్గొనండి.",
+    "Special rituals, Avatars and offerings during the Dusshera festival.": 
+      "దసరా సందర్భంగా ప్రత్యేక పూజలు, అవతారాలు మరియు నైవేద్యాలు.",
+    "Regular weekly pooja with special offerings and blessings.": 
+      "ప్రత్యేక నైవేద్యాలు మరియు దీవెనలతో నియమిత వారపు పూజ.",
+    "Join us to celebrate the temple's anniversary with special programs and events.": 
+      "ప్రత్యేక కార్యక్రమాలు మరియు వేడుకలతో దేవాలయ వార్షికోత్సవాన్ని జరుపుకోండి.",
+    "Community service activities including food distribution and health camp.": 
+      "ఆహార పంపిణీ మరియు ఆరోగ్య శిబిరం సహా సామాజిక సేవా కార్యకలాపాలు."
+  };
+  
+  return {
+    ...event,
+    title: event.title in translations ? translations[event.title] : event.title,
+    description: event.description in translations ? translations[event.description] : event.description
+  };
+};
+
+const translatedEvents = filteredEvents.map(translateEvent);
+---
+
+<MainLayout title={pageTitle} description="దేవరమ్మ దేవాలయంలో రాబోయే వేడుకలు, పండుగలు మరియు సంబరాలను అన్వేషించండి" lang={htmlLang}>
+  <HeroBanner 
+    title={t('events.title')}
+    image="/images/temple/temple-inside.jpg"
+  />
+  
+  <section class="page-content">
+    <div class="container">
+      <div class="calendar-intro">
+        <p class="text-center mb-4">
+          దేవరమ్మ దేవాలయం సంవత్సరం పొడవునా ప్రధాన పండుగలు, నెలవారీ వేడుకలు మరియు సామాజిక కార్యక్రమాలతో 
+          సహా వివిధ కార్యక్రమాలను నిర్వహిస్తుంది. ఈ శుభ సందర్భాలను జరుపుకోవడంలో మాతో చేరండి.
+        </p>
+        
+        <div class="filter-buttons">
+          {Object.entries(teluguEventCategories).map(([key, label]) => (
+            <a 
+              href={`/te/events?category=${key}`}
+              class={`filter-btn ${category === key ? 'active' : ''}`}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      <div class="events-grid">
+        {translatedEvents.length > 0 ? (
+          translatedEvents.map(event => (            <Card 
+              title={event.title}
+              image={event.image}
+              url={`/te/events/${event.id}`}
+            >
+              <p class="event-date"><strong>{event.date}</strong> • {event.time}</p>
+              <p>{event.description}</p>
+            </Card>
+          ))
+        ) : (
+          <div class="no-events">
+            <p>ఈ వర్గంలో ఈవెంట్లు ఏవీ కనిపించలేదు. దయచేసి తర్వాత మళ్లీ తనిఖీ చేయండి లేదా అన్ని ఈవెంట్లను వీక్షించండి.</p>
+            <a href="/te/events" class="btn btn-primary mt-3">అన్ని వేడుకలను చూడండి</a>
+          </div>
+        )}
+      </div>
+      
+      <div class="calendar-section mt-5">
+        <h2 class="text-center mb-4">వేడుకల క్యాలెండర్</h2>
+        <p class="text-center mb-4">
+          వేడుకల క్యాలెండర్‌ని తనిఖీ చేయడం ద్వారా దేవాలయానికి మీ సందర్శనను ప్రణాళిక చేయండి. నిర్దిష్ట వేడుకల
+          గురించి మరిన్ని వివరాల కోసం, పైన ఉన్న వేడుక కార్డులపై క్లిక్ చేయండి.
+        </p>
+        
+        <div class="calendar-notice">
+          <h3>ముఖ్యమైన వార్షిక వేడుకలు</h3>
+          <ul class="event-list">
+            <li>
+              <span class="event-list-date">జనవరి 14-15</span>
+              <span class="event-list-name">సంక్రాంతి వేడుకలు</span>
+            </li>
+            <li>
+              <span class="event-list-date">మార్చి/ఏప్రిల్</span>
+              <span class="event-list-name">కొత్త సంవత్సర వేడుకలు (చంద్ర క్యాలెండర్ ఆధారంగా)</span>
+            </li>
+            <li>
+              <span class="event-list-date">జూన్ 15-21</span>
+              <span class="event-list-name">వార్షిక దేవాలయ వేడుకలు</span>
+            </li>
+            <li>
+              <span class="event-list-date">ఆగస్టు/సెప్టెంబర్</span>
+              <span class="event-list-name">గణేష్ చతుర్థి</span>
+            </li>
+            <li>
+              <span class="event-list-date">అక్టోబర్/నవంబర్</span>
+              <span class="event-list-name">దీపావళి వేడుకలు</span>
+            </li>
+          </ul>
+          
+          <h3 class="mt-4">నెలవారీ & వారపు వేడుకలు</h3>
+          <ul class="event-list">
+            <li>
+              <span class="event-list-date">పౌర్ణమి రోజు</span>
+              <span class="event-list-name">ప్రత్యేక పౌర్ణమి పూజ</span>
+            </li>
+            <li>
+              <span class="event-list-date">ప్రతి శుక్రవారం</span>
+              <span class="event-list-name">దేవి ప్రత్యేక అభిషేకం</span>
+            </li>
+            <li>
+              <span class="event-list-date">మొదటి ఆదివారం</span>
+              <span class="event-list-name">సామూహిక భోజనం & భజన కార్యక్రమం</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="custom-events-box mt-5">
+          <h3>ప్రత్యేక వేడుకను అభ్యర్థించండి</h3>
+          <p>
+            దేవాలయంలో వ్యక్తిగత వేడుకను నిర్వహించాలనుకుంటున్నారా? నామకరణ వేడుకలు, వివాహాలు మరియు ప్రత్యేక
+            పూజల వంటి వివిధ జీవిత ఘటనాల కోసం మేము సౌకర్యాలను అందిస్తాము.
+          </p>
+          <a href="/te/contact?subject=Event%20Request" class="btn btn-primary mt-3">సంప్రదించండి</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .calendar-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    background-color: #f5f0ea;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .event-date {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .no-events {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--bg-alt-color);
+    border-radius: var(--border-radius);
+  }
+  
+  .calendar-section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .calendar-notice {
+    background-color: var(--bg-alt-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+  }
+  
+  .calendar-notice h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+  
+  .event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .event-list li {
+    display: flex;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e6c9a8;
+  }
+  
+  .event-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .event-list-date {
+    min-width: 150px;
+    font-weight: 600;
+  }
+  
+  .custom-events-box {
+    text-align: center;
+    background-color: #f9f5f0;
+    border: 2px dashed #e6c9a8;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+  }
+  
+  .custom-events-box h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .event-list li {
+      flex-direction: column;
+    }
+    
+    .event-list-date {
+      min-width: unset;
+      margin-bottom: 0.25rem;
+    }
+    
+    .filter-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .filter-btn {
+      width: 80%;
+      text-align: center;
+    }
+  }
+</style>

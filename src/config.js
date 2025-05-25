@@ -1,25 +1,28 @@
 export const SITE = {
-  name: 'Deveramma Temple',
-  title: 'Deveramma Temple - A Sacred Place for Devotion',
-  description: 'Welcome to Deveramma Temple, a sacred place for devotion and spiritual enlightenment.',
-  url: 'https://deveramma-temple.com',
+  name: 'Devaramma Temple',
+  title: 'Devaramma Temple - A Sacred Place for Devotion',
+  description: 'Welcome to Devaramma Temple, a sacred place for devotion and spiritual enlightenment.',
+  url: 'https://deveramma.org',
   googleAnalyticsId: '', // Add your Google Analytics ID here if needed
-  author: 'Deveramma Temple Trust'
+  author: 'Devaramma Temple Trust'
 };
 
 export const OPEN_GRAPH = {
   image: {
-    src: '/images/temple/temple-front.jpg',
-    alt: 'Deveramma Temple Front View'
+    src: '/images/temple/temple-front.png',
+    alt: 'Devaramma Temple Front View'
   }
 };
 
 export const TEMPLE_INFO = {
-  address: '123 Temple Street, City Name, State, Country - PIN',
-  phone: '+91 1234567890',
-  email: 'contact@deveramma-temple.com',
-  timings: {
-    weekdays: '6:00 AM - 12:00 PM, 4:00 PM - 8:00 PM',
-    weekends: '6:00 AM - 8:00 PM'
+  address: 'Meruga Vari Devaramma Veedhi, Mantada, Krishna District, Andhra Pradesh - 521256',
+  phone: '+91 9666538548, +91 8328543121',
+  email: 'contact@deveramma.org',  timings: {
+    daily: '6:00 AM - 12:00 PM'
   }
+};
+
+export const SOCIAL_MEDIA = {
+  instagram: 'https://www.instagram.com/deveramma_thalli/',
+  youtube: 'https://www.youtube.com/channel/UC43iq7052FIAIMNdS30tN1Q?sub_confirmation=1'
 };

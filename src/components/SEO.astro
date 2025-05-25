@@ -9,7 +9,7 @@ const {
   robots = 'index, follow',
 } = Astro.props;
 
-const ogImage = new URL(image, Astro.site || 'https://deveramma-temple.com').toString();
+const ogImage = new URL(image, Astro.site || 'https://deveramma.org').toString();
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
