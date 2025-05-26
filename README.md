@@ -31,6 +31,8 @@ This website is built with [Astro](https://astro.build), a modern web framework 
 │   ├── components/  # Reusable UI components
 │   ├── data/        # Data files for events, etc.
 │   ├── i18n/        # Internationalization files
+│   ├── services/    # API and backend services
+│   ├── utils/       # Utility functions
 │   ├── layouts/     # Page layouts
 │   ├── pages/       # All pages (routes)
 │   │   ├── en/      # English language pages
@@ -50,10 +52,19 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build the production site to `./dist/`           |
 | `npm run preview`         | Preview the build locally, before deploying      |
+| `npm run deploy`          | Deploy the site to Vercel                        |
+
+## Environment Setup
+
+The project uses environment variables for configuration. Copy `.env.example` to `.env.local` and fill in the required values.
+
+### Cloudinary Integration
+
+This website uses Cloudinary for image management. See [CLOUDINARY.md](./docs/CLOUDINARY.md) for setup instructions and usage details.
 
 ##  Contact
 
 For any inquiries regarding the temple or this website, please contact us at:
 
-- Email: contact@deveramma.org
+- Email: contact@devaramma.org
 - Phone: +91 6303252209

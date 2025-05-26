@@ -29,10 +29,11 @@ export const ui = {
     'about.history': 'Temple History',
     'about.deity': 'About The Deity',
     'about.architecture': 'Temple Architecture',
-    
-    'events.title': 'Upcoming Events',
+      'events.title': 'Upcoming Events',
     'events.calendar': 'Event Calendar',
     'events.past': 'Past Events',
+    
+    'gallery.title': 'Temple Gallery',
     
     'poojas.title': 'Poojas & Rituals',
     'poojas.special': 'Special Poojas',
@@ -71,10 +72,11 @@ export const ui = {
     'about.history': 'దేవాలయ చరిత్ర',
     'about.deity': 'దేవత గురించి',
     'about.architecture': 'దేవాలయ నిర్మాణ శైలి',
-    
-    'events.title': 'రాబోయే వేడుకలు',
+      'events.title': 'రాబోయే వేడుకలు',
     'events.calendar': 'వేడుకల క్యాలెండర్',
     'events.past': 'గత వేడుకలు',
+    
+    'gallery.title': 'దేవాలయ ఫోటో గ్యాలరీ',
     
     'poojas.title': 'పూజలు & ఆచారాలు',
     'poojas.special': 'ప్రత్యేక పూజలు',

@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Devaramma Temple',
   title: 'Devaramma Temple - A Sacred Place for Devotion',
   description: 'Welcome to Devaramma Temple, a sacred place for devotion and spiritual enlightenment.',
-  url: 'https://deveramma.org',
+  url: 'https://devaramma.org',
   googleAnalyticsId: '', // Add your Google Analytics ID here if needed
   author: 'Devaramma Temple Trust'
 };
@@ -17,7 +17,7 @@ export const OPEN_GRAPH = {
 export const TEMPLE_INFO = {  
   address: 'Meruga Vari Devaramma Veedhi, Mantada, Krishna District, Andhra Pradesh - 521256',
   phone: '+91 XXXXXXXXXX, +91 XXXXXXXXXX', // Phone numbers obfuscated for security
-  email: 'contact@deveramma.org',  
+  email: 'contact@devaramma.org',  
   timings: {
     daily: '6:00 AM - 12:00 PM'
   }
@@ -26,4 +26,11 @@ export const TEMPLE_INFO = {
 export const SOCIAL_MEDIA = {
   instagram: 'https://www.instagram.com/deveramma_thalli/',
   youtube: 'https://www.youtube.com/channel/UC43iq7052FIAIMNdS30tN1Q?sub_confirmation=1'
+};
+
+export const CLOUDINARY = {
+  cloudName: import.meta.env.CLOUDINARY_CLOUD_NAME || 'dbmundpjq',
+  apiKey: import.meta.env.CLOUDINARY_API_KEY || '791481969867835',
+  apiSecret: import.meta.env.CLOUDINARY_API_SECRET || '',
+  url: import.meta.env.CLOUDINARY_URL || 'cloudinary://791481969867835:v3XoT3egYkEyy5t0mmmh42FtdmU@dbmundpjq'
 };

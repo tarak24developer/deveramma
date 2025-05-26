@@ -1,24 +1,26 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import HeroBanner from '../components/HeroBanner.astro';
-import { SITE, CLOUDINARY } from '../config';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import MainLayout from '../../layouts/MainLayout.astro';
+import HeroBanner from '../../components/HeroBanner.astro';
+import { SITE, CLOUDINARY } from '../../config';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import * as cloudinaryUtils from '../../utils/cloudinary';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const pageTitle = "Gallery";
+const pageTitle = "గ్యాలరీ";
 const { cloudName } = CLOUDINARY;
+const htmlLang = "te";
 
 // Local gallery images as fallback
 const localImages = [
-  { src: "/images/temple/temple-inside.jpg", alt: "Inside Temple View", title: "Temple Interior" },
-  { src: "/images/pooja/special-pooja.jpg", alt: "Special Pooja", title: "Special Pooja" },
-  { src: "/images/pooja/weekly-pooja.jpg", alt: "Weekly Rituals", title: "Weekly Rituals" }
+  { src: "/images/temple/temple-inside.jpg", alt: "దేవాలయం లోపలి వీక్షణ", title: "దేవాలయం లోపలి భాగం" },
+  { src: "/images/pooja/special-pooja.jpg", alt: "ప్రత్యేక పూజ", title: "ప్రత్యేక పూజ" },
+  { src: "/images/pooja/weekly-pooja.jpg", alt: "వారపు పూజలు", title: "వారపు పూజలు" }
 ];
 ---
 
-<MainLayout title={pageTitle} description="View photos of Devaramma Temple, including temple architecture, deities, and special events">
+<MainLayout title={pageTitle} description="దేవరమ్మ దేవాలయం యొక్క ఫోటోలను చూడండి, దేవాలయ నిర్మాణం, దేవతలు మరియు ప్రత్యేక కార్యక్రమాల చిత్రాలతో సహా" lang={htmlLang}>
   <HeroBanner 
     title={t('gallery.title')}
     image="/images/temple/temple-inside.jpg"
@@ -26,16 +28,17 @@ const localImages = [
   
   <section class="page-content">
     <div class="container">      <div class="gallery-intro">
-        <h2>Temple Gallery</h2>
-        <p>Explore our collection of photos showcasing the beauty and divinity of Devaramma Temple.</p>
-        <p class="gallery-note"><em>Note: For administrators - all images in this gallery should be uploaded to Cloudinary in the "devaramma" folder.</em></p>      </div>
+        <h2>దేవాలయ ఫోటో గ్యాలరీ</h2>
+        <p>దేవరమ్మ దేవాలయం యొక్క అందం మరియు దైవత్వాన్ని ప్రదర్శించే మా ఫోటోల సేకరణను అన్వేషించండి.</p>
+        <p class="gallery-note"><em>Note: For administrators - all images in this gallery should be uploaded to Cloudinary in the "devaramma" folder.</em></p>
+      </div>
       
       <div id="my-gallery" class="cloudinary-gallery"></div>
       
       <!-- Fallback gallery with local images -->
       <div id="local-gallery" class="local-gallery" style="display:none;">
-        <h3>Temple Photos</h3>
-        <p class="gallery-fallback-note">Viewing local temple images</p>
+        <h3>దేవాలయ చిత్రాలు</h3>
+        <p class="gallery-fallback-note">స్థానిక దేవాలయ చిత్రాలను వీక్షిస్తోంది</p>
         
         <div class="image-grid">
           {localImages.map(img => (
@@ -76,7 +79,7 @@ const localImages = [
         crop: "fill",
         gravity: "auto"
       }    });
-    
+      
     try {
       myGallery.render();
       
@@ -114,47 +117,6 @@ const localImages = [
     margin-bottom: 0.5rem;
   }
   
-  .local-gallery {
-    margin-top: 3rem;
-    text-align: center;
-  }
-  
-  .local-gallery h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-  }
-  
-  .gallery-fallback-note {
-    font-style: italic;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .image-card {
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-  }
-  
-  .image-card img {
-    width: 100%;
-    height: 225px;
-    object-fit: cover;
-  }
-  
-  .image-caption {
-    padding: 0.5rem;
-    background-color: var(--bg-alt-color);
-    font-size: 0.9rem;
-  }
-  
   .gallery-note {
     font-size: 0.85rem;
     color: #666;
@@ -181,6 +143,62 @@ const localImages = [
   @media (max-width: 480px) {
     :global(.cloudinary-gallery) :global(.grid-gallery) {
       grid-template-columns: 1fr !important;
+    }
+  }
+  
+  /* Local fallback gallery styling */
+  .local-gallery {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .gallery-fallback-note {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .image-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .image-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .image-card img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .image-caption {
+    padding: 0.75rem;
+    background-color: var(--light-bg);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .image-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .image-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
