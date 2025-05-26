@@ -18,8 +18,14 @@ export async function submitContactForm(formData) {
         return;
       }
       
-      // Log the data (in production, this would be sent to a server)
-      console.log('Contact form submission:', formData);
+      // Add additional security validation
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        reject({ error: 'Please enter a valid email address' });
+        return;
+      }
+      
+      // In production, don't log sensitive data to console
+      // console.log('Contact form submission:', formData);
       
       // Simulate successful submission
       resolve({ success: true, message: 'Your message has been sent successfully! We will get back to you soon.' });
