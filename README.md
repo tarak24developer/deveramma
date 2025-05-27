@@ -15,6 +15,7 @@ The temple is dedicated to the worship of Goddess Deveramma, a revered deity kno
 - Temple services and poojas
 - Events calendar
 - Photo gallery
+- Interactive chat support
 - Contact information and visit planning assistance
 - Donation options
 

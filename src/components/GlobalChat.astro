@@ -1,0 +1,21 @@
+---
+/**
+ * GlobalChat component that can be included in any layout
+ * to provide a consistent chat experience across the site
+ */
+
+import { CHAT_CONFIG } from '../config';
+import ChatWidget from './ChatWidget.astro';
+import { getLangFromUrl } from '../i18n/utils';
+
+// Define type for supported languages (must match ChatWidget.astro)
+type SupportedLanguages = 'en' | 'te';
+
+const { url } = Astro;
+// Cast the language to our supported languages type
+const lang = getLangFromUrl(url) as SupportedLanguages;
+---
+
+{CHAT_CONFIG.enabled && 
+  <ChatWidget slot="chat-widget" lang={lang} />
+}

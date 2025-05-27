@@ -7,10 +7,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "vercel"
+    "deploy": "vercel",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/vercel": "^8.1.4",
     "astro": "^5.8.0",
     "cloudinary": "^1.41.3"
   },

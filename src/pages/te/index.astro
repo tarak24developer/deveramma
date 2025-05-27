@@ -1,8 +1,9 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import { SITE, TEMPLE_INFO } from '../../config';
+import { SITE, TEMPLE_INFO, CHAT_CONFIG } from '../../config';
 import HeroBanner from '../../components/HeroBanner.astro';
 import Card from '../../components/Card.astro';
+import ChatWidget from '../../components/ChatWidget.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -136,8 +137,7 @@ const upcomingEvents = [
         </div>
       </div>
     </div>
-  </section>
-</MainLayout>
+  </section></MainLayout>
 
 <style>
   /* Section Styling */

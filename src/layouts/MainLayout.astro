@@ -1,11 +1,25 @@
 ---
-import { SITE, OPEN_GRAPH } from '../config';
+import { SITE, OPEN_GRAPH, CHAT_CONFIG } from '../config';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 import '../styles/global.css';
 
-const { title, description, image, frontmatter, robots } = Astro.props;
+// Define supported languages
+type SupportedLanguages = 'en' | 'te';
+
+// Define the props interface
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  frontmatter?: any;
+  robots?: string;
+  lang?: SupportedLanguages;
+}
+
+const { title, description, image, frontmatter, robots } = Astro.props as Props;
 
 const siteTitle = title ? `${title} | ${SITE.title}` : SITE.title;
 const siteDescription = description || SITE.description;
@@ -37,9 +51,10 @@ const siteImage = image || OPEN_GRAPH.image.src;
     
     <main>
       <slot />
-    </main>
-    
-    <Footer />
+    </main>    <Footer />
+      {CHAT_CONFIG.enabled && 
+      <ChatWidget lang={(Astro.props.lang as SupportedLanguages) || 'en'} />
+    }
     
     <script is:inline>
       // Add any site-wide JavaScript here

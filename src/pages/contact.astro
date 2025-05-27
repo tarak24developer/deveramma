@@ -1,7 +1,8 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
-import { SITE, TEMPLE_INFO, SOCIAL_MEDIA } from '../config';
+import ChatWidget from '../components/ChatWidget.astro';
+import { SITE, TEMPLE_INFO, SOCIAL_MEDIA, CHAT_CONFIG } from '../config';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -156,8 +157,7 @@ const preselectedSubject = Astro.url.searchParams.get('subject') || '';
         </div>
       </div>
     </div>
-  </section>
-</MainLayout>
+  </section></MainLayout>
 
 <script>
   // Contact form submission handling
